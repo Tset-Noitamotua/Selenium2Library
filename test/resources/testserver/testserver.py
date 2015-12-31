@@ -1,12 +1,17 @@
 # http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/336012
 
+from __future__ import print_function
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
+
+import http.server
+import http.server
+import http.client
 import os
-import httplib
-import SimpleHTTPServer
-import BaseHTTPServer
 
 
-class StoppableHttpRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
+class StoppableHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
     """http request handler with QUIT stopping the server"""
 
     def do_QUIT(self):
@@ -18,7 +23,7 @@ class StoppableHttpRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     def do_POST(self):
         # We could also process paremeters here using something like below.
         # length = self.headers['Content-Length']
-        # print self.rfile.read(int(length))
+        # print(self.rfile.read(int(length)))
         self.do_GET()
 
     def send_head(self):
@@ -69,7 +74,7 @@ class StoppableHttpRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         return f
 
 
-class StoppableHttpServer(BaseHTTPServer.HTTPServer):
+class StoppableHttpServer(http.server.HTTPServer):
     """http server that reacts to self.stop flag"""
 
     def serve_forever(self):
@@ -81,7 +86,7 @@ class StoppableHttpServer(BaseHTTPServer.HTTPServer):
 
 def stop_server(port=7000):
     """send QUIT request to http server running on localhost:<port>"""
-    conn = httplib.HTTPConnection("localhost:%d" % port)
+    conn = http.client.HTTPConnection("localhost:%d" % port)
     conn.request("QUIT", "/")
     conn.getresponse()
 

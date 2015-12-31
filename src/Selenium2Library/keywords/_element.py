@@ -8,6 +8,13 @@ from Selenium2Library.locators import CustomLocator
 
 from .keywordgroup import KeywordGroup
 
+try:
+    basestring  # attempt to evaluate basestring
+    def isstr(s):
+        return isinstance(s, basestring)
+except NameError:
+    def isstr(s):
+        return isinstance(s, str)
 
 class _ElementKeywords(KeywordGroup):
 
