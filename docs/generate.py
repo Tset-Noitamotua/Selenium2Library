@@ -1,8 +1,5 @@
 #!/usr/bin/env python
-
-from __future__ import print_function
 from os.path import join, dirname
-
 try:
     from robot.libdoc import libdoc
 except:
