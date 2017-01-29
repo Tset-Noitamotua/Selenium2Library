@@ -1,5 +1,5 @@
 addons:
-  firefox: latest-esr
+  firefox: latest
 language: python
 sudo: required
 dist: trusty
@@ -23,7 +23,7 @@ matrix:
   include:
     - python: "2.7" # For PR and cron
       env:
-        - BROWSER=firefox
+        - BROWSER=chrome
         - SELENIUM=2.53.6
     - python: "3.3" # For PR and cron
       env:
