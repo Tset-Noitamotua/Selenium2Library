@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from os.path import abspath, dirname, join
+
 from setuptools import setup
 
 
@@ -39,4 +40,11 @@ setup(name         = 'robotframework-selenium2library',
       packages     = ['Selenium2Library','Selenium2Library.keywords','Selenium2Library.locators',
                       'Selenium2Library.utils'],
       include_package_data = True,
+      requires = [
+                    'decorator',
+                    'selenium',
+                    'robotframework',
+                    'docutils',
+                    'future'
+                    ]
       )

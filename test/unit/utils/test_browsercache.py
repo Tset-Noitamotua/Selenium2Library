@@ -12,7 +12,11 @@ class BrowserCacheTests(unittest.TestCase):
         try:
             self.assertRaises(RuntimeError, cache.current.anyMember())
         except RuntimeError as e:
+<<<<<<< HEAD
             self.assertEqual(str(e), "No current browser")
+=======
+            self.assertEqual("{0}".format(e), "No current browser")
+>>>>>>> af48ff5cd1680ae8d431066d6663d28bb1c9e4c7
 
     def test_browsers_property(self):
         cache = BrowserCache()

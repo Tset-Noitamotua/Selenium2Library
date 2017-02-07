@@ -100,7 +100,11 @@ class BrowserManagementTests(unittest.TestCase):
             bm._make_browser("fireox")
             self.fail("Exception not raised")
         except ValueError as e:
+<<<<<<< HEAD
             self.assertEquals(str(e), "fireox is not a supported browser.")
+=======
+            self.assertEquals("fireox is not a supported browser.", "{0}".format(e))
+>>>>>>> af48ff5cd1680ae8d431066d6663d28bb1c9e4c7
 
     def test_create_webdriver(self):
         bm = _BrowserManagementWithLoggingStubs()
